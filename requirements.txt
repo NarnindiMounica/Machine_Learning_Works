@@ -5,3 +5,5 @@ seaborn
 scikit-learn
 ipykernel
 imbalanced-learn
+lxml
+openpyxl
