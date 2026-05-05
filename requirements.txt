@@ -7,3 +7,4 @@ ipykernel
 imbalanced-learn
 lxml
 openpyxl
+statsmodels
