@@ -8,3 +8,5 @@ imbalanced-learn
 lxml
 openpyxl
 statsmodels
+plotly
+nbformat>=4.2.0
