@@ -10,3 +10,4 @@ openpyxl
 statsmodels
 plotly
 nbformat>=4.2.0
+kneed

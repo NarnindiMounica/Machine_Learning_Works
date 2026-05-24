@@ -7,6 +7,7 @@ requires-python = ">=3.13"
 dependencies = [
     "imbalanced-learn>=0.14.1",
     "ipykernel>=7.2.0",
+    "kneed>=0.8.6",
     "lxml>=6.1.0",
     "matplotlib>=3.10.9",
     "nbformat>=4.2.0",
