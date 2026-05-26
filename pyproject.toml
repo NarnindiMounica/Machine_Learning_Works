@@ -20,3 +20,8 @@ dependencies = [
     "seaborn>=0.13.2",
     "statsmodels>=0.14.6",
 ]
+
+[tool.uv.workspace]
+members = [
+    "Projects/Student_Performance_Indicator",
+]
