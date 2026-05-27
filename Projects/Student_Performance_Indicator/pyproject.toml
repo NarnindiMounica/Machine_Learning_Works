@@ -1,7 +1,21 @@
 [project]
-name = "student-performance-indicator"
+name = "performance_indicator"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+dependencies =  [
+ 
+]
+
+[dependency-groups]
+dev = [
+    "numpy>=2.4.4",
+    "pandas>=3.0.2",
+    "performance-indicator",
+    "setuptools>=82.0.1",
+]
+
+[tool.uv.sources]
+performance-indicator = { workspace = true }
+
