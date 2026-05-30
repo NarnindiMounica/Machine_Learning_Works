@@ -40,7 +40,8 @@ class DataIngestion:
 
             logging.info("Train and Test data is moved to train_data.csv and test_data.csv files")
 
-            return (train_dataframe, test_dataframe)
+            return (self.data_ingestion_config.train_data_path,
+                    self.data_ingestion_config.test_data_path)
         
             logging.info("Data ingestion is completed")
 
