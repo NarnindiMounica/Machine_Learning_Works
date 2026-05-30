@@ -41,6 +41,8 @@ class DataIngestion:
             logging.info("Train and Test data is moved to train_data.csv and test_data.csv files")
 
             return (train_dataframe, test_dataframe)
+        
+            logging.info("Data ingestion is completed")
 
         except Exception as e:
             raise CustomException(e, sys)
