@@ -1,6 +1,8 @@
-def main():
-    print("Hello from student-performance-indicator!")
+from src.components import data_ingestion
 
 
 if __name__ == "__main__":
-    main()
+    obj = data_ingestion.DataIngestion()
+    obj.initiate_data_ingestion()
+
+    
