@@ -12,9 +12,19 @@ class PredictPipeline:
         pass
 
     def predict(self, features):
-         model_path="artifacts\\trained_model.pkl"
-         preprocessor_path="artifacts\\preprocessor.pkl"
-         model = load_object(filepath=model_path)
+        try:
+            model_path="artifacts\\trained_model.pkl"
+            preprocessor_path="artifacts\\preprocessor.pkl"
+            model = load_object(filepath=model_path)
+            preprocessor = load_object(filepath=preprocessor_path)
+            data_scaled = preprocessor.transform(features)
+            preds = model.predict(data_scaled)
+
+            return preds
+        
+        except Exception as e:
+            raise CustomException(e, sys)
+         
 
 class CustomData:
     def __init__(self,
