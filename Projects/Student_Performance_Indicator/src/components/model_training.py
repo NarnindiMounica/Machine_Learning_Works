@@ -41,8 +41,20 @@ class ModelTrainer:
                         "Adaptive Boosting": AdaBoostRegressor(),
                         "XG Boosting": XGBRegressor()}
             
+            params = {"Linear Regression": {},
+                      "Ridge": {"alpha": [0.1, 0.01, 0.001, 1], "solver": [ 'sag', 'saga', 'lbfgs', 'auto']},
+                      "Lasso": {"alpha": [0.1, 0.01, 0.001, 1]},
+                      "Support Vector Regressor": {"kernel": ['linear,' 'poly', 'rbf', 'sigmoid'], "C": [1.0, 0.1, 10, 0.01]},
+                      "KNN": {"n_neighbors": [5, 4, 6, 7, 3]},
+                      "Decision Tree": {"criterion": ['squared_error', 'poisson'], "max_features":['auto', 'sqrt', 'log2'], "max_depth": [4,5,6]},
+                      "Random Forest": {"n_estimators": [100, 150, 200], "criterion": ['squared_error', 'poisson'], "max_depth": [4,5,6]},
+                      "Adaptive Boosting": {"n_estimators": [50, 70, 90], "loss":['linear', 'square']},
+                      "XG Boosting": {}
+                      }
+            
+            
 
-            model_report:dict = evaluate_models(x_train=x_train, x_test=x_test, y_train=y_train, y_test=y_test, models=models)
+            model_report:dict = evaluate_models(x_train=x_train, x_test=x_test, y_train=y_train, y_test=y_test, models=models, params=params)
         
             #to get best modelname and modelscore from report
             best_model_score = max(model_report.values()) 
