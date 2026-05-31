@@ -16,6 +16,8 @@ from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor, AdaBoostRegressor
 from xgboost import XGBRegressor
 
+from sklearn.model_selection import GridSearchCV
+
 
 def save_object(filepath, obj):
 
@@ -31,7 +33,7 @@ def save_object(filepath, obj):
         raise CustomException(e, sys)  
 
 
-def evaluate_models(x_train, x_test, y_train, y_test, models):
+def evaluate_models(x_train, x_test, y_train, y_test, models, params):
 
         try:
             
@@ -40,20 +42,27 @@ def evaluate_models(x_train, x_test, y_train, y_test, models):
             for i in range(len(models)):
 
                 model_name = list(models.keys())[i]
-                model = models[model_name]
+                model_params = params[model_name]
+                model_obj = models[model_name]
 
-                model.fit(x_train, y_train)
+                gridcv = GridSearchCV(estimator=model_obj, param_grid=model_params, cv=3, scoring="r2")
+                gridcv.fit(x_train, y_train)
+
+                model_obj.set_params(**gridcv.best_params_)
+                model_obj.fit(x_train, y_train)
+
                 logging.info(f"{model_name} is trained on training data")
 
-                y_train_pred = model.predict(x_train)
-                y_test_pred = model.predict(x_test)
+                y_train_pred = model_obj.predict(x_train)
+                y_test_pred = model_obj.predict(x_test)
 
                 logging.info(f"{model_name} prediction is done on train and test inputs")
 
                 train_model_score = r2_score(y_train, y_train_pred)
                 test_model_score = r2_score(y_test, y_test_pred)
 
-                report[model] = test_model_score
+                report[model_name] = test_model_score
+            
 
             logging.info("Evaluation is completed, report is prepared") 
 

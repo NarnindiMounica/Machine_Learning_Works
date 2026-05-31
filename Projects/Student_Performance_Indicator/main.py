@@ -8,5 +8,6 @@ if __name__ == "__main__":
     data_transformation_obj = data_transformation.DataTransformation()
     train_array, test_array, preprocessor_filepath=data_transformation_obj.initiate_data_transformation(train_path, test_path)
     model_trainer_obj = model_training.ModelTrainer()
-    print(model_trainer_obj.initiate_model_training(train_array, test_array))
+    r2_value=model_trainer_obj.initiate_model_training(train_array, test_array)
+    print(f"R2_Square Value of Best Model: {r2_value}")
 
