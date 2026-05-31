@@ -11,6 +11,11 @@ class PredictPipeline:
     def __init__(self):
         pass
 
+    def predict(self, features):
+         model_path="artifacts\\trained_model.pkl"
+         preprocessor_path="artifacts\\preprocessor.pkl"
+         model = load_object(filepath=model_path)
+
 class CustomData:
     def __init__(self,
                  gender:str,
@@ -29,7 +34,8 @@ class CustomData:
         self.reading_score = reading_score
         self.writing_score = writing_score
 
-        def get_data_as_dataframe(self):
+    def get_data_as_dataframe(self):
+
             try:
                 custom_data_input_dict = {
                     "gender": [self.gender],
