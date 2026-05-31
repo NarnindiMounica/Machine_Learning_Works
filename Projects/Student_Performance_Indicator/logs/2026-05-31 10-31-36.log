@@ -1,0 +1,5 @@
+[2026-05-31 10:31:45,725] - 24  root - INFO - Data ingestion has started
+[2026-05-31 10:31:45,741] - 28  root - INFO - Read the dataset as dataframe
+[2026-05-31 10:31:45,746] - 33  root - INFO - Raw data is moved to raw_data.csv file
+[2026-05-31 10:31:45,754] - 41  root - INFO - Train and Test data is moved to train_data.csv and test_data.csv files
+[2026-05-31 10:31:45,754] - 43  root - INFO - Data ingestion is completed

@@ -1,0 +1,11 @@
+[2026-05-31 10:37:46,277] - 24  root - INFO - Data ingestion has started
+[2026-05-31 10:37:46,281] - 28  root - INFO - Read the dataset as dataframe
+[2026-05-31 10:37:46,287] - 33  root - INFO - Raw data is moved to raw_data.csv file
+[2026-05-31 10:37:46,294] - 41  root - INFO - Train and Test data is moved to train_data.csv and test_data.csv files
+[2026-05-31 10:37:46,294] - 43  root - INFO - Data ingestion is completed
+[2026-05-31 10:37:46,326] - 77  root - INFO - Reading train and test dataframes is completed
+[2026-05-31 10:37:46,329] - 37  root - INFO - Separated numerical and categorical columns
+[2026-05-31 10:37:46,329] - 53  root - INFO - Numerical and categorical pipelines are prepared
+[2026-05-31 10:37:46,339] - 62  root - INFO - Preprocessor is ready to transform data
+[2026-05-31 10:37:46,357] - 94  root - INFO - Input features in train and test dataframes are preprocessed
+[2026-05-31 10:37:46,357] - 96  root - INFO - Saving preprocessing object

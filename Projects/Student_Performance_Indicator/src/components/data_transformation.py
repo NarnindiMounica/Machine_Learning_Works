@@ -31,8 +31,8 @@ class DataTransformation:
             df = pd.read_csv("D:\\Machine_Learning_Works\\Projects\\Student_Performance_Indicator\\dataset\\stud.csv")
 
             target_column = "math_score"
-            num_columns = [col for col in df.columns if (col != "math_score " and df[col].dtype != "str")]
-            cat_columns = [col for col in df.columns if (col != "math_score " and df[col].dtype == "str")]
+            num_columns = [col for col in df.columns if (col != "math_score" and df[col].dtype != "str")]
+            cat_columns = [col for col in df.columns if (col != "math_score" and df[col].dtype == "str")]
 
             logging.info("Separated numerical and categorical columns")
 
@@ -59,7 +59,7 @@ class DataTransformation:
                 ]
             )
 
-            logging.info("preprocessor is ready to transform data")
+            logging.info("Preprocessor is ready to transform data")
 
             return preprocessor
 
@@ -91,7 +91,7 @@ class DataTransformation:
             train_arr = np.c_[x_train_preprocessed, np.array(y_train)]
             test_arr = np.c_[x_test_preprocessed, np.array(y_test)]
 
-            logging.info("input features in train and test dataframes are preprocessed")
+            logging.info("Input features in train and test dataframes are preprocessed")
 
             logging.info("Saving preprocessing object")
 
@@ -100,20 +100,11 @@ class DataTransformation:
                 obj = preprocessor_obj
             )
 
+            logging.info("Data Transformation is completed")
+
             return (train_arr,
                     test_arr, 
                     self.data_transformation_config.preprocessor_filepath)
         
         except Exception as e:
             raise CustomException(e, sys)
-
-
-
-
-
-
-
-
-
-
-
