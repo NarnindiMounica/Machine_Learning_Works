@@ -47,7 +47,7 @@ def save_object(filepath, obj):
 
                 report[model] = test_model_score
 
-            logging.info("Evaluation is completed, report is prepared")    
+            logging.info("Evaluation is completed, report is prepared") 
 
             return report
 

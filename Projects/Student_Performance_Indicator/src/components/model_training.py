@@ -43,5 +43,23 @@ class ModelTrainer:
             
 
             model_report:dict = evaluate_models(x_train=x_train, x_test=x_test, y_train=y_train, y_test=y_test, models=models)
+        
+            #to get best modelname and modelscore from report
+            best_model_score = max(model_report.values()) 
+
+            rev_report = {v:k for k, v in model_report.items()}
+
+            best_model_name = rev_report.get(max(rev_report))
+
+            best_model_obj = models[best_model_name]
+
+            if best_model_score <=0.6:
+                raise CustomException("No best model found")
+            
+            logging.info("Best model with max score is found")
+
+            save_object(filepath=self.model_trainer_config.trained_model_filepath,
+                        obj=best_model_obj)
+
         except Exception as e:
             raise CustomException(e, sys)
