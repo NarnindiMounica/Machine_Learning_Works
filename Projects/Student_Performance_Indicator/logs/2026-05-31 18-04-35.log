@@ -1,0 +1,33 @@
+[2026-05-31 18:04:36,008] - 24  root - INFO - Data ingestion has started
+[2026-05-31 18:04:36,010] - 28  root - INFO - Read the dataset as dataframe
+[2026-05-31 18:04:36,013] - 33  root - INFO - Raw data is moved to raw_data.csv file
+[2026-05-31 18:04:36,016] - 41  root - INFO - Train and Test data is moved to train_data.csv and test_data.csv files
+[2026-05-31 18:04:36,016] - 43  root - INFO - Data ingestion is completed
+[2026-05-31 18:04:36,048] - 77  root - INFO - Reading train and test dataframes is completed
+[2026-05-31 18:04:36,050] - 37  root - INFO - Separated numerical and categorical columns
+[2026-05-31 18:04:36,050] - 53  root - INFO - Numerical and categorical pipelines are prepared
+[2026-05-31 18:04:36,050] - 62  root - INFO - Preprocessor is ready to transform data
+[2026-05-31 18:04:36,059] - 94  root - INFO - Input features in train and test dataframes are preprocessed
+[2026-05-31 18:04:36,059] - 96  root - INFO - Saving preprocessing object
+[2026-05-31 18:04:36,061] - 103  root - INFO - Data Transformation is completed
+[2026-05-31 18:04:36,061] - 30  root - INFO - Splitting train and test data into input features and targets 
+[2026-05-31 18:04:36,062] - 46  root - INFO - Linear Regression is trained on training data
+[2026-05-31 18:04:36,062] - 51  root - INFO - Linear Regression prediction is done on train and test inputs
+[2026-05-31 18:04:36,063] - 46  root - INFO - Ridge is trained on training data
+[2026-05-31 18:04:36,063] - 51  root - INFO - Ridge prediction is done on train and test inputs
+[2026-05-31 18:04:36,064] - 46  root - INFO - Lasso is trained on training data
+[2026-05-31 18:04:36,064] - 51  root - INFO - Lasso prediction is done on train and test inputs
+[2026-05-31 18:04:36,078] - 46  root - INFO - Support Vector Regressor is trained on training data
+[2026-05-31 18:04:36,108] - 51  root - INFO - Support Vector Regressor prediction is done on train and test inputs
+[2026-05-31 18:04:36,109] - 46  root - INFO - KNN is trained on training data
+[2026-05-31 18:04:36,115] - 51  root - INFO - KNN prediction is done on train and test inputs
+[2026-05-31 18:04:36,117] - 46  root - INFO - Decision Tree is trained on training data
+[2026-05-31 18:04:36,117] - 51  root - INFO - Decision Tree prediction is done on train and test inputs
+[2026-05-31 18:04:36,255] - 46  root - INFO - Random Forest is trained on training data
+[2026-05-31 18:04:36,269] - 51  root - INFO - Random Forest prediction is done on train and test inputs
+[2026-05-31 18:04:36,319] - 46  root - INFO - Adaptive Boosting is trained on training data
+[2026-05-31 18:04:36,324] - 51  root - INFO - Adaptive Boosting prediction is done on train and test inputs
+[2026-05-31 18:04:37,989] - 46  root - INFO - XG Boosting is trained on training data
+[2026-05-31 18:04:37,990] - 51  root - INFO - XG Boosting prediction is done on train and test inputs
+[2026-05-31 18:04:37,991] - 58  root - INFO - Evaluation is completed, report is prepared
+[2026-05-31 18:04:37,991] - 59  root - INFO - Best model with max score is found

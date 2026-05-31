@@ -1,0 +1,32 @@
+[2026-05-31 17:57:28,729] - 24  root - INFO - Data ingestion has started
+[2026-05-31 17:57:28,731] - 28  root - INFO - Read the dataset as dataframe
+[2026-05-31 17:57:28,734] - 33  root - INFO - Raw data is moved to raw_data.csv file
+[2026-05-31 17:57:28,738] - 41  root - INFO - Train and Test data is moved to train_data.csv and test_data.csv files
+[2026-05-31 17:57:28,738] - 43  root - INFO - Data ingestion is completed
+[2026-05-31 17:57:28,759] - 77  root - INFO - Reading train and test dataframes is completed
+[2026-05-31 17:57:28,761] - 37  root - INFO - Separated numerical and categorical columns
+[2026-05-31 17:57:28,761] - 53  root - INFO - Numerical and categorical pipelines are prepared
+[2026-05-31 17:57:28,761] - 62  root - INFO - Preprocessor is ready to transform data
+[2026-05-31 17:57:28,770] - 94  root - INFO - Input features in train and test dataframes are preprocessed
+[2026-05-31 17:57:28,770] - 96  root - INFO - Saving preprocessing object
+[2026-05-31 17:57:28,772] - 103  root - INFO - Data Transformation is completed
+[2026-05-31 17:57:28,772] - 30  root - INFO - Splitting train and test data into input features and targets 
+[2026-05-31 17:57:28,780] - 46  root - INFO - Model is trained on training data
+[2026-05-31 17:57:28,781] - 51  root - INFO - Model prediction is done on train and test inputs
+[2026-05-31 17:57:28,784] - 46  root - INFO - Model is trained on training data
+[2026-05-31 17:57:28,785] - 51  root - INFO - Model prediction is done on train and test inputs
+[2026-05-31 17:57:28,787] - 46  root - INFO - Model is trained on training data
+[2026-05-31 17:57:28,787] - 51  root - INFO - Model prediction is done on train and test inputs
+[2026-05-31 17:57:28,802] - 46  root - INFO - Model is trained on training data
+[2026-05-31 17:57:28,832] - 51  root - INFO - Model prediction is done on train and test inputs
+[2026-05-31 17:57:28,836] - 46  root - INFO - Model is trained on training data
+[2026-05-31 17:57:28,842] - 51  root - INFO - Model prediction is done on train and test inputs
+[2026-05-31 17:57:28,847] - 46  root - INFO - Model is trained on training data
+[2026-05-31 17:57:28,847] - 51  root - INFO - Model prediction is done on train and test inputs
+[2026-05-31 17:57:28,980] - 46  root - INFO - Model is trained on training data
+[2026-05-31 17:57:28,993] - 51  root - INFO - Model prediction is done on train and test inputs
+[2026-05-31 17:57:29,036] - 46  root - INFO - Model is trained on training data
+[2026-05-31 17:57:29,042] - 51  root - INFO - Model prediction is done on train and test inputs
+[2026-05-31 17:57:30,838] - 46  root - INFO - Model is trained on training data
+[2026-05-31 17:57:30,841] - 51  root - INFO - Model prediction is done on train and test inputs
+[2026-05-31 17:57:30,841] - 58  root - INFO - Evaluation is completed, report is prepared

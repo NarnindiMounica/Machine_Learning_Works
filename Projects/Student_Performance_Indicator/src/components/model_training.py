@@ -51,7 +51,7 @@ class ModelTrainer:
 
             best_model_name = rev_report.get(max(rev_report))
 
-            best_model_obj = models[best_model_name]
+            best_model_obj = best_model_name
 
             if best_model_score <=0.6:
                 raise CustomException("No best model found")
@@ -60,6 +60,12 @@ class ModelTrainer:
 
             save_object(filepath=self.model_trainer_config.trained_model_filepath,
                         obj=best_model_obj)
+            
+            predicted = best_model_obj.predict(x_test)
+
+            r2_square = r2_score(y_test, predicted)
+
+            return r2_square
 
         except Exception as e:
             raise CustomException(e, sys)
