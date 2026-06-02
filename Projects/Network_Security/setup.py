@@ -12,3 +12,4 @@ setup(
     version=1.0,
     install_requires=get_requirements(filepath='requirements.txt'),
     packages=find_packages())
+
