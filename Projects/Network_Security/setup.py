@@ -1,9 +1,9 @@
 from setuptools import find_packages, setup
 
-def get_requirements(filepath)->list:
+def get_requirements(filepath)->list[str]:
     with open(filepath, 'r') as fileobj:
         requirements = fileobj.readlines()
-        requirements = [req.strip() for req in requirements if req!="- e." ]
+        requirements = [req.strip() for req in requirements if req!="-e ." ]
         return requirements
 
 
