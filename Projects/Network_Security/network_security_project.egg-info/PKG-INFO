@@ -4,4 +4,6 @@ Version: 1.0
 Requires-Dist: python-dotenv
 Requires-Dist: pandas
 Requires-Dist: numpy
+Requires-Dist: pymongo
+Requires-Dist: certifi
 Dynamic: requires-dist
