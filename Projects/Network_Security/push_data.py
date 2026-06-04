@@ -13,12 +13,11 @@ ca=certifi.where()
 mongodb_url = os.getenv("MONGODB_URL")
 
 class NetworkDataExtract:
-    def __init__(self, filepath, records, collection, database):
+    def __init__(self, filepath):
         self.filepath = filepath
-        self.records = records
-        self.collection = collection
-        self.database = database
-
+        self.collection = "NetworkData"
+        self.Database = "MounicaAI"
+        
     def csv_to_json_converter(self):
         try:
             data = pd.read_csv(self.filepath)
@@ -28,20 +27,25 @@ class NetworkDataExtract:
         except Exception as e:
             raise CustomException(e, sys)
         
-    def insert_data_mongodb(self):
+    def insert_data_mongodb(self, records):
         try:
             self.mongo_client = pymongo.MongoClient(mongodb_url)
             self.database = self.mongo_client[self.database]
             self.collection = self.database[self.collection]
-            self.collection.insert_many(self.records)
-            return len(self.records)
+            self.collection.insert_many(records)
+            return len(records)
         except Exception as e:
             raise CustomException(e, sys)
         
 
-
 if __name__=="__main__":
-            
+
+    network_data_extract_obj = NetworkDataExtract(filepath="network_data\\phisingData.csv")
+    records=network_data_extract_obj.csv_to_json_converter()
+    print(network_data_extract_obj.insert_data_mongodb(records=records))
+    
+
+
 
 
         
