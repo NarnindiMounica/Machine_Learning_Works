@@ -18,8 +18,13 @@ class NetworkDataExtract:
 
     def csv_to_json_converter(self):
         try:
-            pass
+            data = pd.read_csv(self.filepath)
+            data.reset_index(drop=True, inplace=True)
+            records=list(json.loads((data.T.to_json()).values()))
+            return records
         except Exception as e:
             raise CustomException(e, sys)
+        
+    def insert_data_mongodb(self, )    
 
         
