@@ -22,7 +22,7 @@ class NetworkDataExtract:
         try:
             data = pd.read_csv(self.filepath)
             data.reset_index(drop=True, inplace=True)
-            records=list(json.loads((data.T.to_json()).values()))
+            records=list(json.loads(data.T.to_json()).values())
             return records
         except Exception as e:
             raise CustomException(e, sys)
@@ -30,8 +30,8 @@ class NetworkDataExtract:
     def insert_data_mongodb(self, records):
         try:
             self.mongo_client = pymongo.MongoClient(mongodb_url)
-            self.database = self.mongo_client[self.database]
-            self.collection = self.database[self.collection]
+            self.Database = self.mongo_client[self.Database]
+            self.collection = self.Database[self.collection]
             self.collection.insert_many(records)
             return len(records)
         except Exception as e:
@@ -42,6 +42,7 @@ if __name__=="__main__":
 
     network_data_extract_obj = NetworkDataExtract(filepath="network_data\\phisingData.csv")
     records=network_data_extract_obj.csv_to_json_converter()
+    print(records)
     print(network_data_extract_obj.insert_data_mongodb(records=records))
     
 
