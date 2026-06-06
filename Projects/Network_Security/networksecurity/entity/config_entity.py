@@ -1,0 +1,20 @@
+from datetime import datetime
+import os,sys
+
+from networksecurity.constant import training_pipeline
+
+print(training_pipeline.PIPELINE_NAME)
+print(training_pipeline.ARTIFACT_DIR)
+
+class TrainingPipelineConfig:
+    def __init__(self, timestamp=datetime.now()):
+        timestamp = timestamp.strftime("%Y-%m-%D %H-%M-%S")
+        self.pipelinename = training_pipeline.PIPELINE_NAME
+        self.artifactname = training_pipeline.ARTIFACT_DIR
+        self.artifact_dir = os.path.join(self.artifactname, timestamp)
+        self.timestamp:str = timestamp
+
+
+class DataIngestionConfig:
+    def __init__(self, training_pipeline_config:TrainingPipelineConfig):
+        self.data_ingestion_dir:str=os.path.join(training_pipeline_config.artifact_dir, training_pipeline.)       
