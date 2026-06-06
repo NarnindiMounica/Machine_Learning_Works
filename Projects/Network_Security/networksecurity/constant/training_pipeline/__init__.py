@@ -7,6 +7,8 @@ import pandas as pd
 TARGET_COLUMN="Result"
 PIPELINE_NAME:str="NetworkSecurity"
 ARTIFACT_DIR:str="Artifacts"
+TRAIN_FILENAME:str="Traindata.csv"
+TEST_FILENAME:str="Testdata.csv"
 FILENAME:str="phisingData.csv"
 
 ''' Data Ingestion related constants starts with DATA_INGESTION var name'''
