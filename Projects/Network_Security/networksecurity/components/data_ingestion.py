@@ -17,6 +17,7 @@ from networksecurity.logging_details.logger import logging
 #Data ingestion config
 
 from networksecurity.entity.config_entity import DataIngestionConfig, TrainingPipelineConfig
+from networksecurity.entity.artifact_entity import DataIngestionArtifact
 
 class DataIngestion:
     def __init__(self, data_ingestion_config:DataIngestionConfig):
@@ -80,6 +81,11 @@ class DataIngestion:
             dataframe=self.export_collection_as_dataframe()
             dataframe=self.export_data_into_feature_store()
             self.split_data_as_train_test(dataframe=dataframe)
+            dataingestionartifact=DataIngestionArtifact(train_filepath=self.data_ingestion_config.training_filepath,
+                                                        test_filepath=self.data_ingestion_config.testing_filepath)
+            return dataingestionartifact
         except Exception as e:
             raise CustomException(e, sys)
+        
+
 
