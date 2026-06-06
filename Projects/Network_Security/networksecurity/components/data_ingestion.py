@@ -75,12 +75,11 @@ class DataIngestion:
             raise CustomException(e, sys)
 
 
-
-
-        
     def initiate_data_ingestion(self):
         try:
             dataframe=self.export_collection_as_dataframe()
+            dataframe=self.export_data_into_feature_store()
+            self.split_data_as_train_test(dataframe=dataframe)
         except Exception as e:
             raise CustomException(e, sys)
 
