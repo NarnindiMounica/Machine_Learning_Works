@@ -10,4 +10,5 @@ from networksecurity.entity.artifact_entity import DataIngestionArtifact
 
 if __name__=="__main__":
     dataingestionobj= DataIngestion(data_ingestion_config=DataIngestionConfig(training_pipeline_config=TrainingPipelineConfig))
+    logging.info("Initiate data ingestion")
     print(dataingestionobj.initiate_data_ingestion())

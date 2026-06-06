@@ -26,5 +26,20 @@ class DataIngestionConfig:
         self.collection_name:str=training_pipeline.DATA_INGESTION_COLLECTION_NAME
         self.database_name:str=training_pipeline.DATA_INGESTION_DATABASE_NAME  
 
+class DataValidationConfig:
+    def __init__(self, training_pipeline_config):
+        self.training_pipeline_config = TrainingPipelineConfig()
+        self.data_validation_dir:str=os.path.join(self.training_pipeline_config.artifact_dir, training_pipeline.DATA_VALIDATION_DIR_NAME)
+        self.valid_data_dir:str=os.path.join(self.data_validation_dir, training_pipeline.DATA_VALIDATION_VALID_DIR) 
+        self.invalid_data_dir:str=os.path.join(self.data_validation_dir, training_pipeline.DATA_VALIDATION_INVALID_DIR) 
+        self.valid_train_filepath:str=os.path.join(self.valid_data_dir, training_pipeline.TRAIN_FILENAME)
+        self.valid_test_filepath:str=os.path.join(self.valid_data_dir, training_pipeline.TEST_FILENAME)
+        self.invalid_train_filepath:str=os.path.join(self.invalid_data_dir, training_pipeline.TRAIN_FILENAME)
+        self.invalid_test_filepath:str=os.path.join(self.invalid_data_dir, training_pipeline.TEST_FILENAME)
+        self.drift_report_filepath:str=os.path.join(self.data_validation_dir, 
+                                               training_pipeline.DATA_VALIDATION_DRIFT_REPORT_DIR,
+                                               training_pipeline.DATA_VALIDATION_DRIFT_REPORT_FILENAME)
+
+
 
 
