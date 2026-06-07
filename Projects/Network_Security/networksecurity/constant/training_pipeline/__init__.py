@@ -10,6 +10,7 @@ ARTIFACT_DIR:str="Artifacts"
 TRAIN_FILENAME:str="Traindata.csv"
 TEST_FILENAME:str="Testdata.csv"
 FILENAME:str="phisingData.csv"
+SCHEMA_FILEPATH:str=os.path.join("data_schema", "schema.yml")
 
 ''' Data Ingestion related constants starts with DATA_INGESTION var name'''
 
