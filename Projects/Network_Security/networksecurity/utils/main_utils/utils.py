@@ -11,3 +11,4 @@ def read_yaml_file(filepath:str)->dict:
             return yaml.safe_load(yaml_file)
     except Exception as e:
         raise CustomException(e,sys)
+    
