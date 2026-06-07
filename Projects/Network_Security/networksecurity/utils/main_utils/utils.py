@@ -18,8 +18,8 @@ def write_yaml_file(filepath:str, content:object, replace:bool=False)->None:
         if replace:
             if os.path.exists(filepath):
                 os.remove(filepath)
-        os.makdirs(os.path.dirname(filepath), exist_ok=True)        
-        with open(filepath, 'wb') as yaml_obj:
+        os.makedirs(os.path.dirname(filepath), exist_ok=True)        
+        with open(filepath, 'w') as yaml_obj:
             yaml.safe_dump(content, yaml_obj)
     except Exception as e:
         raise CustomException(e, sys)    

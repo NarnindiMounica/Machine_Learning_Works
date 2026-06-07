@@ -29,7 +29,7 @@ class DataValidation:
     @staticmethod
     def read_data(filepath:str)->pd.DataFrame:
         try:
-            return pd.DataFrame(filepath)
+            return pd.read_csv(filepath)
         except Exception as e:
             raise CustomException(e, sys)  
 
@@ -69,14 +69,14 @@ class DataValidation:
                 df2 = current_df[column]
                 is_same_dist = ks_2samp(df1, df2)
                 if threshold <= is_same_dist.pvalue:
-                    is_found = False
+                        is_found = False
                 else: 
-                    is_found = True
-                    status = False
-            report.update({column: {
-                "p_value": float(is_same_dist.pvalue),
-                "drift_status": is_found
-            }})  
+                        is_found = True
+                        status = False
+                report.update({column: {
+                    "p_value": float(is_same_dist.pvalue),
+                    "drift_status": is_found
+                }})  
             drift_report_filepath = self.data_validation_config.drift_report_filepath
 
             #create directory
@@ -90,7 +90,7 @@ class DataValidation:
             raise CustomException(e, sys)    
 
 
-    def initiate_data_valiation(self)->DataValidationArtifact:
+    def initiate_data_validation(self)->DataValidationArtifact:
         try:
             train_filepath = self.data_ingestion_artifacts.train_filepath
             test_filepath = self.data_ingestion_artifacts.test_filepath
@@ -127,11 +127,11 @@ class DataValidation:
             test_dataframe.to_csv(self.data_validation_config.valid_test_filepath, index=False, header=True)  
 
             data_validation_artifact=DataValidationArtifact(
-                validation_status=status
-                valid_train_filepath=self.data_validation_config.valid_train_filepath
-                valid_test_filepath=self.data_validation_config.valid_test_filepath
-                invalid_train_filepath=self.data_validation_config.invalid_test_filepath
-                invalid_test_filepath=self.data_validation_config.invalid_test_filepath
+                validation_status=status,
+                valid_train_filepath=self.data_validation_config.valid_train_filepath,
+                valid_test_filepath=self.data_validation_config.valid_test_filepath,
+                invalid_train_filepath=self.data_validation_config.invalid_test_filepath,
+                invalid_test_filepath=self.data_validation_config.invalid_test_filepath,
                 drift_report_filepath=self.data_validation_config.drift_report_filepath
 
             )  

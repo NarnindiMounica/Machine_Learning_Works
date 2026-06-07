@@ -1,0 +1,4 @@
+[2026-06-07 18:42:19,522]  14  root  INFO : Initiate data ingestion
+[2026-06-07 18:42:21,201]  64  root  INFO : Applied train and test split on dataframes
+[2026-06-07 18:42:21,201]  66  root  INFO : Exited split_data_as_train_test method of DataIngestion class
+[2026-06-07 18:42:21,201]  71  root  INFO : Exporting train and test file path
