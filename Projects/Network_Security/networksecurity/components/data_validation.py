@@ -83,8 +83,9 @@ class DataValidation:
 
             dir_name = os.path.dirname(drift_report_filepath)
             os.makedirs(dir_name, exist_ok=True)
+            write_yaml_file(filepath=drift_report_filepath, content=report)
 
-            return report
+            return status
         except Exception as e:
             raise CustomException(e, sys)    
 
@@ -99,6 +100,7 @@ class DataValidation:
             train_dataframe = DataValidation.read_data(filepath=train_filepath)
             test_dataframe = DataValidation.read_data(filepath=test_filepath)
 
+            #validating columns of dataframes
             train_status = self.validate_number_of_columns(dataframe=train_dataframe)
             if not train_status:
                 error_message="Train dataframe does not contain all columns.\n"
@@ -107,13 +109,34 @@ class DataValidation:
             if not test_status:
                 error_message="Test dataframe does not contain all columns.\n" 
 
+            #validating numerical columns of dataframes
             train_numerical_status = self.validate_number_of_num_columns(dataframe=train_dataframe)
             if not train_numerical_status:
                 numerical_error_message="Train dataframe does not contain all numerical columns.\n"  
 
             test_numerical_status = self.validate_number_of_num_columns(dataframe=test_dataframe)
             if not test_numerical_status:
-                numerical_error_message="Test dataframe does not contain all numerical columns.\n"              
+                numerical_error_message="Test dataframe does not contain all numerical columns.\n" 
+
+            #checking for data drift 
+            status=self.detect_dataset_drift(base_df=train_dataframe, current_df=test_dataframe)  
+            dir_path=os.path.dirname(self.data_validation_config.valid_train_filepath) 
+            os.makedirs(dir_path, exist_ok=True) 
+
+            train_dataframe.to_csv(self.data_validation_config.valid_train_filepath, index=False, header=True) 
+            test_dataframe.to_csv(self.data_validation_config.valid_test_filepath, index=False, header=True)  
+
+            data_validation_artifact=DataValidationArtifact(
+                validation_status=status
+                valid_train_filepath=self.data_validation_config.valid_train_filepath
+                valid_test_filepath=self.data_validation_config.valid_test_filepath
+                invalid_train_filepath=self.data_validation_config.invalid_test_filepath
+                invalid_test_filepath=self.data_validation_config.invalid_test_filepath
+                drift_report_filepath=self.data_validation_config.drift_report_filepath
+
+            )  
+
+            return data_validation_artifact       
 
         except Exception as e:
             raise CustomException(e, sys)    
