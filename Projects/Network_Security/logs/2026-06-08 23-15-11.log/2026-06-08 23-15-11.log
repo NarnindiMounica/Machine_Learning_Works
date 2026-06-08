@@ -1,0 +1,18 @@
+[2026-06-08 23:15:13,429]  15  root  INFO : Initiate data ingestion
+[2026-06-08 23:15:15,153]  64  root  INFO : Applied train and test split on dataframes
+[2026-06-08 23:15:15,153]  66  root  INFO : Exited split_data_as_train_test method of DataIngestion class
+[2026-06-08 23:15:15,175]  71  root  INFO : Exporting train and test file path
+[2026-06-08 23:15:15,216]  17  root  INFO : completion of data ingestion
+[2026-06-08 23:15:15,216]  18  root  INFO : Initiate data validation
+[2026-06-08 23:15:15,289]  39  root  INFO : Required number of columns : 31
+[2026-06-08 23:15:15,289]  40  root  INFO : DataFrame has columns : 31
+[2026-06-08 23:15:15,289]  39  root  INFO : Required number of columns : 31
+[2026-06-08 23:15:15,305]  40  root  INFO : DataFrame has columns : 31
+[2026-06-08 23:15:15,305]  52  root  INFO : Number of numerical columns: 31
+[2026-06-08 23:15:15,305]  52  root  INFO : Number of numerical columns: 31
+[2026-06-08 23:15:15,416]  21  root  INFO : completion of data validation
+[2026-06-08 23:15:15,416]  22  root  INFO : Initiate data transformation
+[2026-06-08 23:15:15,416]  41  root  INFO : Initiating data transformation
+[2026-06-08 23:15:15,466]  29  root  INFO : Initialized knnimputer with params: {'missing_values': nan, 'n_neighbors': 3, 'weights': 'uniform'}
+[2026-06-08 23:15:15,496]  41  root  INFO : Entered the save_object function from utils folder
+[2026-06-08 23:15:15,496]  45  root  INFO : Exiting from save_object function from utils folder

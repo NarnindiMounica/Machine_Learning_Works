@@ -1,0 +1,16 @@
+[2026-06-08 23:10:57,049]  15  root  INFO : Initiate data ingestion
+[2026-06-08 23:10:58,860]  64  root  INFO : Applied train and test split on dataframes
+[2026-06-08 23:10:58,860]  66  root  INFO : Exited split_data_as_train_test method of DataIngestion class
+[2026-06-08 23:10:58,862]  71  root  INFO : Exporting train and test file path
+[2026-06-08 23:10:58,904]  17  root  INFO : completion of data ingestion
+[2026-06-08 23:10:58,904]  18  root  INFO : Initiate data validation
+[2026-06-08 23:10:58,989]  39  root  INFO : Required number of columns : 31
+[2026-06-08 23:10:58,989]  40  root  INFO : DataFrame has columns : 31
+[2026-06-08 23:10:58,989]  39  root  INFO : Required number of columns : 31
+[2026-06-08 23:10:58,999]  40  root  INFO : DataFrame has columns : 31
+[2026-06-08 23:10:58,999]  52  root  INFO : Number of numerical columns: 31
+[2026-06-08 23:10:58,999]  52  root  INFO : Number of numerical columns: 31
+[2026-06-08 23:10:59,126]  21  root  INFO : completion of data validation
+[2026-06-08 23:10:59,126]  22  root  INFO : Initiate data transformation
+[2026-06-08 23:10:59,126]  41  root  INFO : Initiating data transformation
+[2026-06-08 23:10:59,176]  29  root  INFO : Initialized knnimputer with params: {'missing_values': nan, 'n_neighbors': 3, 'weights': 'uniform'}

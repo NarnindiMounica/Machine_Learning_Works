@@ -65,7 +65,7 @@ class DataTransformation:
 
             #saving processor_object
 
-            save_object(filepath=self.data_transformation_config.transformed_object_filepath, object=preprocessor)
+            save_object(filepath=self.data_transformation_config.transformed_object_filepath, obj=preprocessor)
 
             #preparing artifact
 
