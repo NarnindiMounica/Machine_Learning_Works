@@ -13,6 +13,7 @@ FILENAME:str="phisingData.csv"
 SCHEMA_FILEPATH:str=os.path.join("data_schema", "schema.yml")
 PREPROCESSING_OBJECT_FILENAME:str="preprocessor.pkl"
 
+
 ''' Data Ingestion related constants starts with DATA_INGESTION var name'''
 
 DATA_INGESTION_COLLECTION_NAME:str = "NetworkData"
