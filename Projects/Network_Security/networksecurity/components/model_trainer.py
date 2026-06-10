@@ -7,7 +7,7 @@ from networksecurity.entity.artifact_entity import DataTransformationArtifact, M
 from networksecurity.entity.config_entity import ModelTrainerConfig
 
 from networksecurity.utils.ml_utils.model.estimator import NetworkModel
-from networksecurity.utils.main_utils.utils import save_object, save_numpy_array_data, load_numpy_array_data, evaluate_models
+from networksecurity.utils.main_utils.utils import save_object, load_object, save_numpy_array_data, load_numpy_array_data, evaluate_models
 from networksecurity.utils.ml_utils.metric.classification_metric import get_classification_score
 
 from sklearn.linear_model import LogisticRegression
@@ -65,6 +65,25 @@ class ModelTrainer:
             best_model_score = max(sorted(model_report.values()))
             #to get best model name
             best_model_name = list(model_report.keys())[list(model_report.values()).index(best_model_score)]
+            #to get best model
+            best_model = models[best_model_name]
+            y_train_pred = best_model.predict(x_train)
+            y_test_pred = best_model.predict(x_test)
+
+            classification_train_metric=get_classification_score(y_true=y_train, y_pred=y_train_pred)
+            classification_test_metric=get_classification_score(y_true=y_test, y_pred=y_test_pred)
+
+            preprocessor = load_object(filepath=self.data_transformation_artifact.transformed_object_filepath)
+
+            model_filepath = os.path.join(self.model_trainer_config.model_trainer_dir_name, self.model_trainer_config.trained_model_filepath)
+            os.makedirs(model_filepath, exist_ok=True)
+
+            NetworkModel(preprocessor=preprocessor, model=best_model)
+            save_object(filepath=model_filepath, obj=NetworkModel)
+
+            model_trainer_artifact = ModelTrainerArtifact(trained_model_filepath=model_filepath, train_metrics_artifact=classification_train_metric, test_metrics_artifact=classification_test_metric)
+        
+            return model_trainer_artifact
         
         except Exception as e:
             raise CustomException(e, sys)    
@@ -83,7 +102,7 @@ class ModelTrainer:
             y_test = test_array[:, -1]
             
             model = self.train_model(x_train, y_train)
-            model_trainer_artifact = ModelTrainerArtifact(trained_model_filepath=, train_metrics_artifact=, test_metrics_artifact=)
+            model_trainer_artifact = self.train_model(x_train=x_train, y_train=y_train, x_test=x_test, y_test=y_test)
             return model_trainer_artifact
         except Exception as e:
             raise CustomException(e, sys)
