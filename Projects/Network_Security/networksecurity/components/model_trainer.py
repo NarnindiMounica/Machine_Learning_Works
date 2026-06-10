@@ -60,6 +60,12 @@ class ModelTrainer:
             }
 
             model_report:dict = evaluate_models(x_train=x_train, y_train=y_train, x_test=x_test, y_test=y_test, models=models, params=params)
+
+            #to get best model score from dict
+            best_model_score = max(sorted(model_report.values()))
+            #to get best model name
+            best_model_name = list(model_report.keys())[list(model_report.values()).index(best_model_score)]
+        
         except Exception as e:
             raise CustomException(e, sys)    
 
