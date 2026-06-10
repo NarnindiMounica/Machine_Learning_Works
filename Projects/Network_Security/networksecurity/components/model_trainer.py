@@ -7,7 +7,7 @@ from networksecurity.entity.artifact_entity import DataTransformationArtifact, M
 from networksecurity.entity.config_entity import ModelTrainerConfig
 
 from networksecurity.utils.ml_utils.model.estimator import NetworkModel
-from networksecurity.utils.main_utils.utils import save_object, save_numpy_array_data, load_numpy_array_data
+from networksecurity.utils.main_utils.utils import save_object, save_numpy_array_data, load_numpy_array_data, evaluate_models
 from networksecurity.utils.ml_utils.metric.classification_metric import get_classification_score
 
 from sklearn.linear_model import LogisticRegression
@@ -59,7 +59,7 @@ class ModelTrainer:
                 }
             }
 
-            model_report
+            model_report:dict = evaluate_models(x_train=x_train, y_train=y_train, x_test=x_test, y_test=y_test, models=models, params=params)
         except Exception as e:
             raise CustomException(e, sys)    
 

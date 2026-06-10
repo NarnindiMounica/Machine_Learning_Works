@@ -5,6 +5,9 @@ import pandas as pd
 from networksecurity.exception_details.exception import CustomException
 from networksecurity.logging_details.logger import logging
 
+from sklearn.model_selection import GridSearchCV
+from sklearn.metrics import r2_score
+
 def read_yaml_file(filepath:str)->dict:
     try:
         with open(filepath, 'rb') as yaml_file:
@@ -64,6 +67,34 @@ def load_numpy_array_data(filepath:str)->np.array:
         with open(filepath, 'r') as file_obj:
             return np.load(file_obj)
     except Exception as e:
-        raise CustomException(e, sys)    
+        raise CustomException(e, sys)
+
+
+def evaluate_models(x_train, y_train, x_test, y_test, models, params):
+    try:
+        report = {}
+        for i in range(len(list(models))):
+            model_name = list(models.keys())[i]
+            model = models[list(models.keys())[i]]
+            param = params[list(params.keys())[i]]
+
+            grid_cv = GridSearchCV(estimator=model, param_grid=params, cv=3)
+            grid_cv.fit(x_train, y_train)
+
+            model.set_params(**grid_cv.best_params_)
+            model.fit(x_train, y_train)
+
+            y_train_pred = model.predict(x_train)
+            y_test_pred = model.predict(x_test)
+
+            train_model_score = r2_score(y_train, y_train_pred)
+            test_model_score = r2_score(y_test, y_test_pred)
+
+            report[model_name]=test_model_score
+
+            return report
+        
+    except Exception as e:
+        raise CustomException(e, sys)        
 
     
