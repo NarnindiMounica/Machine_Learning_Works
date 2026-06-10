@@ -75,8 +75,7 @@ class ModelTrainer:
 
             preprocessor = load_object(filepath=self.data_transformation_artifact.transformed_object_filepath)
 
-            model_filepath = os.path.join(self.model_trainer_config.model_trainer_dir_name, self.model_trainer_config.trained_model_filepath)
-            os.makedirs(model_filepath, exist_ok=True)
+            model_filepath = os.path.dirname(self.model_trainer_config.trained_model_filepath)
 
             NetworkModel(preprocessor=preprocessor, model=best_model)
             save_object(filepath=model_filepath, obj=NetworkModel)
@@ -101,7 +100,6 @@ class ModelTrainer:
             y_train = train_array[:, -1]
             y_test = test_array[:, -1]
             
-            model = self.train_model(x_train, y_train)
             model_trainer_artifact = self.train_model(x_train=x_train, y_train=y_train, x_test=x_test, y_test=y_test)
             return model_trainer_artifact
         except Exception as e:

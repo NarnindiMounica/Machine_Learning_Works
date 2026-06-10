@@ -64,7 +64,7 @@ def load_numpy_array_data(filepath:str)->np.array:
     try:
         if not os.path.exists(filepath):
             raise Exception(f"The file {filepath} does not exist")
-        with open(filepath, 'r') as file_obj:
+        with open(filepath, 'rb') as file_obj:
             return np.load(file_obj)
     except Exception as e:
         raise CustomException(e, sys)
@@ -78,7 +78,7 @@ def evaluate_models(x_train, y_train, x_test, y_test, models, params):
             model = models[list(models.keys())[i]]
             param = params[list(params.keys())[i]]
 
-            grid_cv = GridSearchCV(estimator=model, param_grid=params, cv=3)
+            grid_cv = GridSearchCV(estimator=model, param_grid=param, cv=3)
             grid_cv.fit(x_train, y_train)
 
             model.set_params(**grid_cv.best_params_)
