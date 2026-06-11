@@ -1,4 +1,4 @@
-import os, sys
+import os, sys, mlflow
 
 from networksecurity.exception_details.exception import CustomException
 from networksecurity.logging_details.logger import logging
@@ -19,6 +19,22 @@ class ModelTrainer:
     def __init__(self, model_trainer_config:ModelTrainerConfig, data_transformation_artifact:DataTransformationArtifact):
         self.model_trainer_config = model_trainer_config
         self.data_transformation_artifact = data_transformation_artifact
+
+    def track_mlflow(self, best_model, classification_metrics:ClassificationMetricArtifact):
+        try:
+            with mlflow.start_run():
+                f1_score=classification_metrics.f1_score
+                precision_score=classification_metrics.precision_score
+                recall_score=classification_metrics.recall_score
+
+                mlflow.log_metric("f1_score", f1_score)
+                mlflow.log_metric("precision_score", precision_score)
+                mlflow.log_metric("recall_score", recall_score)
+
+                mlflow.sklearn.log_model(best_model, "model")
+                
+        except Exception as e:
+            raise CustomException(e, sys)
 
     def train_model(self, x_train, y_train, x_test, y_test):
         try:
@@ -72,6 +88,9 @@ class ModelTrainer:
 
             classification_train_metric=get_classification_score(y_true=y_train, y_pred=y_train_pred)
             classification_test_metric=get_classification_score(y_true=y_test, y_pred=y_test_pred)
+
+            #tracking the mlflow
+            self.track_mkflow(best_model, classification_train_metric)
 
             preprocessor = load_object(filepath=self.data_transformation_artifact.transformed_object_filepath)
 
