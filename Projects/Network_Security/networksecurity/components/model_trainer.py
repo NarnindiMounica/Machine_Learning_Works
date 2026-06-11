@@ -15,6 +15,9 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import AdaBoostClassifier, GradientBoostingClassifier, RandomForestClassifier
 
+import dagshub
+dagshub.init(repo_owner='NarnindiMounica', repo_name='Machine_Learning_Works', mlflow=True)
+
 class ModelTrainer:
     def __init__(self, model_trainer_config:ModelTrainerConfig, data_transformation_artifact:DataTransformationArtifact):
         self.model_trainer_config = model_trainer_config
@@ -99,6 +102,13 @@ class ModelTrainer:
 
             NetworkModel(preprocessor=preprocessor, model=best_model)
             save_object(filepath=model_filepath, obj=NetworkModel)
+
+            #model pusher implementation
+            logging.info("saving objects in final_model folder")
+            save_object(filepath="final_model/model.pkl", obj=best_model)
+            save_object(filepath="final_model/preprocessor.pkl", obj=preprocessor)
+
+            
 
             model_trainer_artifact = ModelTrainerArtifact(trained_model_filepath=model_filepath, train_metrics_artifact=classification_train_metric, test_metrics_artifact=classification_test_metric)
         
