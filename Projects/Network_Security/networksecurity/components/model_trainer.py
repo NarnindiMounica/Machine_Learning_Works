@@ -32,7 +32,7 @@ class ModelTrainer:
                 mlflow.log_metric("recall_score", recall_score)
 
                 mlflow.sklearn.log_model(best_model, "model")
-                
+
         except Exception as e:
             raise CustomException(e, sys)
 
@@ -90,7 +90,8 @@ class ModelTrainer:
             classification_test_metric=get_classification_score(y_true=y_test, y_pred=y_test_pred)
 
             #tracking the mlflow
-            self.track_mkflow(best_model, classification_train_metric)
+            self.track_mlflow(best_model, classification_train_metric)
+            self.track_mlflow(best_model, classification_test_metric)
 
             preprocessor = load_object(filepath=self.data_transformation_artifact.transformed_object_filepath)
 
