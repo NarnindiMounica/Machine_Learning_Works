@@ -15,8 +15,8 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import AdaBoostClassifier, GradientBoostingClassifier, RandomForestClassifier
 
-import dagshub
-dagshub.init(repo_owner='NarnindiMounica', repo_name='Machine_Learning_Works', mlflow=True)
+# import dagshub
+# dagshub.init(repo_owner='NarnindiMounica', repo_name='Machine_Learning_Works', mlflow=True)
 
 class ModelTrainer:
     def __init__(self, model_trainer_config:ModelTrainerConfig, data_transformation_artifact:DataTransformationArtifact):

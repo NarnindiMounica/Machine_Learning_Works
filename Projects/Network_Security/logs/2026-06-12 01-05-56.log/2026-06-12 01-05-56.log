@@ -1,0 +1,26 @@
+[2026-06-12 01:06:00,034]  16  root  INFO : Initiate data ingestion
+[2026-06-12 01:06:01,636]  64  root  INFO : Applied train and test split on dataframes
+[2026-06-12 01:06:01,636]  66  root  INFO : Exited split_data_as_train_test method of DataIngestion class
+[2026-06-12 01:06:01,636]  71  root  INFO : Exporting train and test file path
+[2026-06-12 01:06:01,672]  18  root  INFO : completion of data ingestion
+[2026-06-12 01:06:01,672]  19  root  INFO : Initiate data validation
+[2026-06-12 01:06:01,754]  39  root  INFO : Required number of columns : 31
+[2026-06-12 01:06:01,754]  40  root  INFO : DataFrame has columns : 31
+[2026-06-12 01:06:01,754]  39  root  INFO : Required number of columns : 31
+[2026-06-12 01:06:01,764]  40  root  INFO : DataFrame has columns : 31
+[2026-06-12 01:06:01,764]  52  root  INFO : Number of numerical columns: 31
+[2026-06-12 01:06:01,764]  52  root  INFO : Number of numerical columns: 31
+[2026-06-12 01:06:01,872]  22  root  INFO : completion of data validation
+[2026-06-12 01:06:01,872]  23  root  INFO : Initiate data transformation
+[2026-06-12 01:06:01,872]  41  root  INFO : Initiating data transformation
+[2026-06-12 01:06:01,937]  29  root  INFO : Initialized knnimputer with params: {'missing_values': nan, 'n_neighbors': 3, 'weights': 'uniform'}
+[2026-06-12 01:06:01,957]  44  root  INFO : Entered the save_object function from utils folder
+[2026-06-12 01:06:01,959]  48  root  INFO : Exiting from save_object function from utils folder
+[2026-06-12 01:06:01,959]  26  root  INFO : Initiate model trainer
+[2026-06-12 01:06:43,102]  44  root  INFO : Entered the save_object function from utils folder
+[2026-06-12 01:06:43,111]  48  root  INFO : Exiting from save_object function from utils folder
+[2026-06-12 01:06:43,111]  107  root  INFO : saving objects in final_model folder
+[2026-06-12 01:06:43,111]  44  root  INFO : Entered the save_object function from utils folder
+[2026-06-12 01:06:43,134]  48  root  INFO : Exiting from save_object function from utils folder
+[2026-06-12 01:06:43,134]  44  root  INFO : Entered the save_object function from utils folder
+[2026-06-12 01:06:43,134]  48  root  INFO : Exiting from save_object function from utils folder
